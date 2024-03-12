@@ -1,6 +1,7 @@
 # VaR-calculator
 
 Requirements can be installed using
+
 `pip install -r requirements.txt
 
 Running `python3 var.py -h` or `python3 var.py --help`to see options.
