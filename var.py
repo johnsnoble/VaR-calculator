@@ -81,32 +81,3 @@ if __name__ == "__main__":
 
     print(f"VaR: {var} ES: {es}")
     display(vvar, args.display_bins, var, es, args.num_of_trials, args.save_path)
-"""
-def main_old(vol, s0, miu, r, k1, k2, T, h, n, confidence, portfolio = lambda c, p: p - c):
-    p0, c0 = put_price(s0, vol, r, k2, T), call_price(s0, vol, r, k1, T)
-    v0 = portfolio(c0, p0)
-
-    T -= h
-    St = np.zeros(n)
-
-    from random import seed, gauss
-    seed(1) 
-
-    for i in range(n):
-        Z = gauss(0,1)
-        St[i] = s0 * math.exp((miu - 0.5 * vol ** 2) * h + Z * vol * (h ** 0.5))
-
-    ct, pt = np.zeros(n), np.zeros(n)
-
-    for i in range(n):
-        ct[i] = call_price(St[i], vol, r, k1, T)
-        pt[i] = put_price(St[i], vol, r, k2, T)
-    vt = portfolio(ct, pt)
-    vvar = v0 - vt
-    vvar = np.sort(vvar);
-    ivar = round((confidence) * n)
-    var = vvar[ivar]
-    #calculate ES
-    es = np.mean(vvar[range(math.floor(confidence * n), n)])
-    return vvar, var, es
-"""
